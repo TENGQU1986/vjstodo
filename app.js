@@ -1,40 +1,52 @@
 let val;
 
-val = document;
-val = document.all;
-val = document.all[2];
-val = document.all.length;
-val = document.head;
-val = document.body;
-val = document.doctype;
-val = document.domain;
-val = document.URL;
-val = document.characterSet;
-val = document.contentType;
+const list = document.querySelector('ul.collection');
+const listItem = document.querySelectorAll('li.collection-item');
 
-val = document.forms;
-val = document.forms[0];
-val = document.forms[0].id;
-val = document.forms[0].method;
-val = document.forms[0].action;
+val = listItem;
+// val = list;
 
-val = document.links;
-val = document.links[0];
-val = document.links[0].id;
-val = document.links[0].className;
-val = document.links[0].classList[0];
+//get child node
 
-val = document.images;
+val = list.childNodes;
 
-val = document.scripts;
-val = document.scripts[2].getAttribute('src');
+//get child elements node
 
-let scripts = document.scripts;
+val = list.children[0].children[0];
+val = list.childElementCount;
+//Get parent node
 
-let scriptsArr = Array.from(scripts);
+val = listItem.parentNode;
+val = listItem.parentElement;
+val = list.firstChild;
 
-scriptsArr.forEach(function(script) {
-  console.log(script.getAttribute('src'));
-});
+// Create element
+const li = document.createElement('li');
 
-console.log(val);
+//Add class
+li.className = 'collection-item';
+
+//Add id
+li.id = 'new-item';
+
+//Add attribute
+li.setAttribute('title', 'New Item');
+
+li.appendChild(document.createTextNode('Hello World'));
+//Create new link element
+const link = document.createElement('a');
+
+//Add class
+link.className = ('delete-item secondary-content');
+//add icon html
+link.innerHTML = '<i class="fa fa-remove"></i>';
+// li.textContent = 'new li';
+li.appendChild(link);
+const li2 = document.createElement('li');
+li2.className = 'collection-item';
+li2.textContent = 'last item';
+// li2.appendChild(document.createTextNode('last item'));
+//Append li as a child to ul
+document.querySelector('ul.collection').appendChild(li);
+document.querySelector('ul.collection').appendChild(li2);
+console.log(li2);
